@@ -8,8 +8,6 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
     
-  
-
       .state('tabsController.search', {
     url: '/search',
     views: {
@@ -21,7 +19,7 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.announces', {
-    url: '/anounces',
+    url: '/announces',
     views: {
       'tab2': {
         templateUrl: 'templates/announces.html',
@@ -63,7 +61,6 @@ angular.module('app.routes', [])
     templateUrl: 'templates/profil.html',
     controller: 'profilCtrl'
   })
-
 $urlRouterProvider.otherwise('/page1/search')
 
   

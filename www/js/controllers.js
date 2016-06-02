@@ -23,4 +23,18 @@ angular.module('app.controllers', [])
 .controller('profilCtrl', function($scope) {
 
 })
- 
+
+.controller("announcesCtrl", function($scope, Value) {
+    $scope.items = Value;
+    $scope.addItem = function() {
+        var name = prompt("What do you need to buy?");
+        if (name) {
+            $scope.items.$add({
+                "name": name
+            });
+        }
+    };
+})
+
+
+

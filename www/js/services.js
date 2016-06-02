@@ -6,5 +6,10 @@ angular.module('app.services', [])
 
 .service('BlankService', [function(){
 
-}]);
+}])
+
+.factory("Value", function($firebaseArray) {
+    var itemsRef = new Firebase("https://ionicapp-blahblahcar.firebaseio.com/test123");
+    return $firebaseArray(itemsRef);
+});
 
