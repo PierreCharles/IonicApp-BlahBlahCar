@@ -8,8 +8,8 @@ angular.module('app.services', [])
 
 }])
 
-.factory("Value", function($firebaseArray) {
-    var itemsRef = new Firebase("https://ionicapp-blahblahcar.firebaseio.com/test123");
+.factory("Announces", function($firebaseArray) {
+    var itemsRef = new Firebase("https://ionicapp-blahblahcar.firebaseio.com/Announces");
     return $firebaseArray(itemsRef);
 });
 

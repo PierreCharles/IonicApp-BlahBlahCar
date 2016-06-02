@@ -56,10 +56,10 @@ angular.module('app.routes', [])
     controller: 'signupCtrl'
   })
 
-  .state('profil', {
-    url: '/profil',
-    templateUrl: 'templates/profil.html',
-    controller: 'profilCtrl'
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html',
+    controller: 'profileCtrl'
   })
 $urlRouterProvider.otherwise('/page1/search')
 

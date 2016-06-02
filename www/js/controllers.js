@@ -1,15 +1,26 @@
 angular.module('app.controllers', [])
   
-.controller('searchCtrl', function($scope) {
-
+.controller('searchCtrl', function($scope, $state) {
+    $scope.checkAccount = function() {
+        $state.go('profile');
+    };
 })
-   
-.controller('announcesCtrl', function($scope) {
 
-})
-   
-.controller('proposeARideCtrl', function($scope) {
+.controller('proposeARideCtrl', function($scope, Announces, $state) {
 
+    $scope.items = Announces;
+
+    $scope.addItem = function() {
+        var name = prompt("What do you need to buy?");
+        if (name) {
+            $scope.items.$add({
+                "name": name
+            });
+        }
+    };
+    $scope.checkAccount = function() {
+        $state.go('profile');
+    };
 })
       
 .controller('loginCtrl', function($scope) {
@@ -20,21 +31,18 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('profilCtrl', function($scope) {
+.controller('profileCtrl', function($scope) {
 
 })
 
-.controller("announcesCtrl", function($scope, Value) {
+.controller("announcesCtrl", function($scope, Value, $state) {
     $scope.items = Value;
-    $scope.addItem = function() {
-        var name = prompt("What do you need to buy?");
-        if (name) {
-            $scope.items.$add({
-                "name": name
-            });
-        }
+
+    $scope.checkAccount = function() {
+        $state.go('profile');
     };
-})
+
+});
 
 
 

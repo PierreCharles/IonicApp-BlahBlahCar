@@ -1,4 +1,10 @@
 <ion-view title="Propose a Ride" id="page4" class=" ">
+
+    <ion-header-bar class="top">
+        <button class="button button-icon ion-person" ng-click="checkAccount()"></button>
+        <h1 class="title">Propose A Ride</h1>
+    </ion-header-bar>
+
     <ion-content padding="true" class="has-header">
         <form id="proposeARide-form6" class="list ">
             <label class="item item-input " id="proposeARide-input11">
@@ -24,6 +30,6 @@
                 <input type="text" placeholder="Number Of Place">
             </label>
         </form>
-        <button id="proposeARide-button5" class=" button button-positive  button-block ">Next</button>
+        <button id="proposeARide-button5" class=" button button-positive button-block " ng-click="addItem()">Add announces</button>
     </ion-content>
 </ion-view>
