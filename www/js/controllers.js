@@ -35,8 +35,9 @@ angular.module('app.controllers', [])
 
 })
 
-.controller("announcesCtrl", function($scope, Value, $state) {
-    $scope.items = Value;
+.controller("announcesCtrl", function($scope, Announces, $state) {
+
+    $scope.items = Announces;
 
     $scope.checkAccount = function() {
         $state.go('profile');
