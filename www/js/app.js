@@ -1,6 +1,5 @@
 'Use Strict';
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
-    'app.controllers', 'app.routes'])
+angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages', 'app.routes'])
 
 
 // Changue this for your Firebase App URL.

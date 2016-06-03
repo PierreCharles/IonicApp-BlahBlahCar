@@ -7,8 +7,6 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
             Utils.show();
             Auth.login(user)
                 .then(function(authData) {
-                    //console.log("id del usuario:" + JSON.stringify(authData));
-
                     ref.child('profile').orderByChild("id").equalTo(authData.uid).on("child_added", function(snapshot) {
                         console.log(snapshot.key());
                         userkey = snapshot.key();
@@ -19,7 +17,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
                                 $localStorage.email = obj.email;
                                 $localStorage.userkey = userkey;
                                 Utils.hide();
-                                $state.go('tabsController.search');
+                                $state.go('menu.search');
                             })
                             .catch(function(error) {
                                 console.error("Error:", error);
@@ -40,7 +38,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
                     console.log("Login Failed!", error);
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
-                    $state.go('home');
+                    $state.go('menu.search');
                 }
             }
         );
@@ -53,7 +51,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
                     console.log("Login Failed!", error);
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
-                    $state.go('home');
+                    $state.go('menu.search');
                 }
             }
         );
@@ -66,7 +64,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
                     console.log("Login Failed!", error);
                 } else {
                     console.log("Authenticated successfully with payload:", authData);
-                    $state.go('home');
+                    $state.go('menu.search');
                 }
             }
         );

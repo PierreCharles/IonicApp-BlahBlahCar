@@ -5,67 +5,68 @@ angular.module('app.routes', [])
 
   .state('login', {
     url: '/login',
-    templateUrl: 'views/login/login.html',
+    templateUrl: 'views/login.html',
     controller:'loginController'
   })
 
   .state('forgot', {
     url: '/forgot',
-    templateUrl: 'views/forgot/forgot.html',
+    templateUrl: 'views/forgot.html',
     controller:'forgotController'
   })
       
   .state('register', {
     url: '/register',
-    templateUrl: 'views/register/register.html',
+    templateUrl: 'views/register.html',
     controller:'registerController'
   })
-      
-  .state('home', {
-    url: '/home',
-    templateUrl: 'views/home/home.html',
-    controller:'homeController'
+
+  .state('menu', {
+    url: '/page',
+    templateUrl: 'views/menu.html',
+    abstract:true
   })
 
-      .state('tabsController', {
-        url: '/page1',
-        templateUrl: 'views/tabscontroller/tabsController.html',
-        abstract:true
-      })
-
-
-      .state('tabsController.search', {
-     url: '/search',
-     views: {
-       'tab1': {
-         templateUrl: 'views/search/search.html',
-         controller: 'searchController'
+  .state('menu.search', {
+    url: '/search',
+    views: {
+      'tab1': {
+        templateUrl: 'views/search.html',
+        controller: 'searchController'
        }
+    }
+  })
+
+  .state('menu.announces', {
+    url: '/announces',
+    views: {
+      'tab2': {
+        templateUrl: 'views/announces.html',
+        controller: 'announcesController'
+      }
+    }
+  })
+
+  .state('menu.propose', {
+    url: '/propose',
+    views: {
+      'tab3': {
+        templateUrl: 'views/propose.html',
+        controller: 'proposeController'
+      }
+    }
+  })
+
+  .state('menu.profile', {
+     url: '/profile',
+     views: {
+         'tab4': {
+             templateUrl: 'views/profile.html',
+             controller: 'profileController'
+         }
      }
-   })
-
-      .state('tabsController.announces', {
-        url: '/announces',
-        views: {
-          'tab2': {
-            templateUrl: 'views/announces/announces.html',
-            controller: 'announcesController'
-          }
-        }
-      })
-
-      .state('tabsController.proposeARide', {
-        url: '/propose',
-        views: {
-          'tab3': {
-            templateUrl: 'views/propose/proposeARide.html',
-            controller: 'proposeController'
-          }
-        }
-      })
+  })
 
 $urlRouterProvider.otherwise('/login')
-
-  
 
 });

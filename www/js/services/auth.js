@@ -43,18 +43,16 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
 
     logout: function() {
       auth.$unauth();
-			console.log("Usuario Sale.");
+	  console.log("Disconnected");
     },
 
 		resetpassword: function(user) {
 			return auth.$resetPassword({
 				  email: user.email
 				}).then(function() {
-					Utils.alertshow("Exito.","La clave fue enviada a su correo.");
-				  //console.log("Password reset email sent successfully!");
+					Utils.alertshow("Information","An email was send to "+user.email);
 				}).catch(function(error) {
 					Utils.errMessage(error);
-				  //console.error("Error: ", error.message);
 				});
     },
 
