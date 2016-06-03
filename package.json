@@ -1,7 +1,7 @@
 {
-  "name": "ionicapp",
+  "name": "ionicapp-blahblahcar",
   "version": "1.1.1",
-  "description": "IonicApp: An Ionic project",
+  "description": "IonicApp-BlahBlahCar: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
