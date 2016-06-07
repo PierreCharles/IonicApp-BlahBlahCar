@@ -18,10 +18,17 @@ Each directory has its own purpose (and set of files):
 - **vendor/** contains your dependencies
 - **web/** contains your front controllers and your assets.
 
+## Features
 
+    - Authentification 
+        - Register Users.
+        - LogIn Users.
+        - Reset Password.
+        - Logout.
+        - Form Validation Ready.
+        
 ### Todo
 
-    - User authentification
     - Take and upload picture
     - Search announces
     - Display announces
