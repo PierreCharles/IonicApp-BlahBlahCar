@@ -6,61 +6,59 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
 	var Auth = {
 		user: {},
 
-    createProfile: function(uid, user) {
-      var profile = {
-				id: uid,
-        email: user.email,
-        gravatar: get_gravatar(user.email, 40),
-				registered_in: Date()
-      };
+        createProfile: function(uid, user) {
+          var profile = {
+            id: uid,
+            email: user.email,
+            gravatar: get_gravatar(user.email, 40),
+            registered_in: Date()
+          };
 
-      var profileRef = $firebaseArray(ref.child('profile'));
-      return profileRef.$add(profile).then(function(ref) {
-			  var id = ref.key();
-			  //console.log("added record with id " + id);
-			  profileRef.$indexFor(id); // returns location in the array
-			});
-    },
+          var profileRef = $firebaseArray(ref.child('profile'));
+          return profileRef.$add(profile).then(function(ref) {
+                  var id = ref.key();
+                  profileRef.$indexFor(id);
+                });
+        },
 
-    login: function(user) {
-      return auth.$authWithPassword(
-        {email: user.email, password: user.password}
-      );
-    },
+        login: function(user) {
+          return auth.$authWithPassword(
+            {email: user.email, password: user.password}
+          );
+        },
 
-    register: function(user) {
-      return auth.$createUser({email: user.email, password: user.password})
-        .then(function() {
-          return Auth.login(user);
-        })
-        .then(function(data) {
-          return Auth.createProfile(data.uid, user);
-        });
-    },
+        register: function(user) {
+          return auth.$createUser({email: user.email, password: user.password})
+            .then(function() {
+              return Auth.login(user);
+            })
+            .then(function(data) {
+              return Auth.createProfile(data.uid, user);
+            });
+        },
 
-    logout: function() {
-      auth.$unauth();
-	  console.log("Disconnected");
-    },
+        logout: function() {
+            auth.$unauth();
+        },
 
-		resetpassword: function(user) {
-			return auth.$resetPassword({
-				  email: user.email
-				}).then(function() {
-					Utils.alertshow("Information","An email was send to "+user.email);
-				}).catch(function(error) {
-					Utils.errMessage(error);
-				});
-    },
+        resetpassword: function(user) {
+            return auth.$resetPassword({
+                  email: user.email
+                }).then(function() {
+                    Utils.alertshow("Information","An email was send to "+user.email);
+                }).catch(function(error) {
+                    Utils.errMessage(error);
+                });
+          },
 
-		changePassword: function(user) {
-			return auth.$changePassword({email: user.email, oldPassword: user.oldPass, newPassword: user.newPass});
-		},
+        changePassword: function(user) {
+            return auth.$changePassword({email: user.email, oldPassword: user.oldPass, newPassword: user.newPass});
+        },
 
-    signedIn: function() {
-      return !!Auth.user.provider; //using !! means (0, undefined, null, etc) = false | otherwise = true
-    }
-	};
+        signedIn: function() {
+            return !!Auth.user.provider;
+        }
+    };
 
 	auth.$onAuth(function(authData) {
 		if(authData) {

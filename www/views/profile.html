@@ -1,12 +1,34 @@
 <ion-view view-title="Profile" hide-back-button="true" class="backImage">
 
-    <ion-content class="padding-top">
+    <ion-content ng-controller="profileController" padding="true">
 
-        <div style="text-align:center">
-            <button ng-click="logOut()" id="search-button4" class=" button button-large button-assertive ">
-                Logout <i class="icon ion-power"></i>
-            </button>
+        <!-- Welcome View -->
+        <div class="panel" title="Welcome" id="page1" data-header="none" data-footer="none" selected="true">
+            <div style="text-align:center">
+                <br>
+                <br>
+                <h3>{{ user_email }}</h3>
+
+                <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
+
+                <p>Welcome on my app</p>
+                <br>
+                <br>
+            </div>
+            <ul class="list inset">
+                <button class="button button-full button-stable" ng-click="takePhoto()"> Take Photo </button>
+                <button class="button button-full button-stable" ng-click="choosePhoto()"> Choose Photo </button>
+                <br>
+                <button ng-click="logOut()" id="search-button4" class=" button button-full button-assertive ">
+                    Logout <i class="icon ion-power"></i>
+                </button>
+            </ul>
         </div>
 
+
+
+
     </ion-content>
+
+
 </ion-view>

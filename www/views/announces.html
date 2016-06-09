@@ -2,16 +2,16 @@
      <ion-content>
          <div class="announces bloc">
              <ion-list class ="announcesList">
-                 <ion-item ng-repeat="item in items"  style="padding: 0px; background-color: transparent; border: none; overflow: inherit; ">
+                 <ion-item ng-repeat="item in items"  style="padding: 0px; background-color: transparent; border: none; overflow: inherit; padding:0px;">
                      <div class="list card">
 
                          <div class="item item-body">
-                             <h2><b>{{item.From}} - {{item.To}}</b></h2>
-                             <p>{{item.DateHourStart}} - {{item.Price}} €</p>
+                             <h2 style="margin:0px;"><b>{{item.From}} - {{item.To}}</b></h2>
+                             <p>{{ getDate(item.DateHourStart) }} - {{item.Price}} €</p>
                          </div>
 
                          <div class="item item-avatar">
-                             <img src="/www/assets/images/avatar.jpeg"/>
+                             <img src="../assets/images/avatar.png"/>
 
                          </div>
                      </div>

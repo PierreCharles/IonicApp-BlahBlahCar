@@ -1,9 +1,8 @@
 'Use Strict';
-angular.module('App').controller('profileController',
-    function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('profileController', function ($scope, $cordovaCamera, $location,  Auth) {
 
     var auth = Auth;
-    $scope.items=auth;
+    $scope.user_email=auth.user.auth.token.email;
 
     $scope.logOut = function() {
         if(angular.isDefined(auth.user)){
@@ -12,5 +11,44 @@ angular.module('App').controller('profileController',
         }
     };
 
+
+    $scope.takePhoto = function () {
+         var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+         $cordovaCamera.getPicture(options).then(function (imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        }, function (err) {
+             // An error occured. Show a message to the user
+         });
+    };
+
+    $scope.choosePhoto = function () {
+        var options = {
+            quality: 75,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+        }, function (err) {
+             // An error occured. Show a message to the user
+        });
+    };
 });
 
