@@ -1,19 +1,27 @@
-<ion-view title="Announces" id="page3" class=" ">
-
-    <ion-header-bar class="top">
-        <button class="button button-icon ion-person" ng-click="checkAccount()"></button>
-        <h1 class="title">Announces</h1>
-        <button class="button button-icon ion-email" ng-click="checkAccount()"></button>
-    </ion-header-bar>
-
+<ion-view title="My Announces" id="page2" class="backImage">
      <ion-content>
-         <ion-list>
-             <ion-item ng-repeat="item in items">
-                 {{item.name}}
-             </ion-item>
-         </ion-list>
-    </ion-content>
+         <div class="announces bloc">
+             <ion-list class ="announcesList">
+                 <ion-item ng-repeat="item in items"  style="padding: 0px; background-color: transparent; border: none; overflow: inherit; ">
+                     <div class="list card">
 
+                         <div class="item item-body">
+                             <h2><b>{{item.From}} - {{item.To}}</b></h2>
+                             <p>{{item.DateHourStart}} - {{item.Price}} €</p>
+                         </div>
+
+                         <div class="item item-avatar">
+                             <img src="/www/assets/images/avatar.jpeg"/>
+
+                         </div>
+                     </div>
+                 </ion-item>
+             </ion-list>
+         </div>
+
+
+
+    </ion-content>
 </ion-view>
 
 

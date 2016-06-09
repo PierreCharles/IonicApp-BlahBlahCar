@@ -1,36 +1,30 @@
-<ion-view title="Propose a Ride" id="page4" class=" ">
-
-    <ion-header-bar class="top">
-        <button class="button button-icon ion-person" ng-click="checkAccount()"></button>
-        <h1 class="title">Propose A Ride</h1>
-        <button class="button button-icon ion-email" ng-click="checkAccount()"></button>
-    </ion-header-bar>
+<ion-view title="Propose a Ride" id="page4" class="backImage">
 
     <ion-content padding="true" class="has-header">
         <form id="proposeARide-form6" class="list ">
             <label class="item item-input " id="proposeARide-input11">
-                <input type="text" placeholder="From">
+                <input type="text" placeholder="From" ng-model="Info.From">
             </label>
             <label class="item item-input " id="proposeARide-input12">
-                <input type="text" placeholder="To">
+                <input type="text" placeholder="To" ng-model="Info.To">
             </label>
-            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" class=" ">highway</ion-toggle>
-            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle4" class=" ">Round trip</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" ng-model="Info.Highway" class=" ">Highway</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle4" ng-model="Info.RoundTrip" class=" ">Round trip</ion-toggle>
             <label class="item item-input " id="proposeARide-input14">
-                <input type="text" placeholder="Date and hour start">
+                <input type="text" placeholder="Date and hour start" ng-model="Info.DateHourStart">
             </label>
             <label class="item item-input " id="proposeARide-input15">
-                <input type="text" placeholder="Dat and hour return">
+                <input type="text" placeholder="Date and hour return" ng-model="Info.DateHourReturn">
             </label>
         </form>
         <form id="proposeARide-form7" class="list ">
             <label class="item item-input " id="proposeARide-input16">
-                <input type="text" placeholder="Price €">
+                <input type="text" placeholder="Price €" ng-model="Info.Price">
             </label>
             <label class="item item-input " id="proposeARide-input18">
-                <input type="text" placeholder="Number Of Place">
+                <input type="text" placeholder="Number Of Place" ng-model="Info.NumberOfPlace">
             </label>
         </form>
-        <button id="proposeARide-button5" class=" button button-positive button-block " ng-click="addItem()">Add announces</button>
+        <button id="proposeARide-button5" class=" button button-positive button-block " ng-click="addAnnounces(Info)">Add announces</button>
     </ion-content>
 </ion-view>

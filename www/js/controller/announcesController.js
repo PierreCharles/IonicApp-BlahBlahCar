@@ -1,10 +1,10 @@
 'Use Strict';
-angular.module('App').controller('announcesController', function ($scope, Announces,$state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('announcesController', function ($scope, MyAnnounces,$state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
 
-    $scope.items = Announces;
+    console.log(Auth.user.uid);
+    console.log(MyAnnounces);
 
-    $scope.checkAccount = function() {
-        // $state.go('profile');
-    };
+    $scope.items = MyAnnounces;
+
 });
 

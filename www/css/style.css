@@ -34,3 +34,14 @@ label.item.valid-lr {
   padding: 2px 0 2px 16px;
   color: red;
 }
+
+.backImage {
+    background: url(../assets/images/background.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.announces {
+    margin: 10px;
+}

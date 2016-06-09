@@ -1,20 +1,29 @@
-<ion-view view-title="Search a ride" hide-back-button="true">
-    <ion-content class="padding-top">
+<ion-view title="Your Announces" id="page1" class="backImage">
+    <ion-content>
+        <div class="announces bloc">
+            <ion-list>
+                <ion-item style="padding: 0px; background-color: transparent; border: none; overflow: inherit;">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text"  placeholder="Search an announces">
+                    </label>
+                </ion-item>
 
-        <ion-content padding="true" class="has-header">
-            <form id="search-form4" class="list ">
-                <label class="item item-input " id="search-input7" name="From">
-                    <input type="text" placeholder="From">
-                </label>
-                <label class="item item-input " id="search-input8" name="To">
-                    <input type="text" placeholder="To">
-                </label>
-                <label class="item item-input " id="search-input9" name="Date">
-                    <input type="text" placeholder="Date">
-                </label>
-            </form>
-            <button id="search-button4" class=" button button-positive  button-block ">Search</button>
-        </ion-content>
-
+                <ion-item style="padding: 0px; background-color: transparent; border: none; overflow: inherit;">
+                    <ion-item class="item-avatar" ng-repeat="item in items | filter:input.searchText" style="padding: 0px; background-color: transparent; border: none; overflow: inherit;">
+                        <div class="list card">
+                            <div class="item item-body">
+                                <h2><b>{{item.From}} - {{item.To}}</b></h2>
+                                <p>{{item.DateHourStart}} - {{item.Price}} €</p>
+                            </div>
+                            <div class="item item-avatar">
+                                <img src="/www/assets/images/avatar.jpeg"/>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>
+
