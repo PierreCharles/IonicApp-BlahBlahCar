@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('searchController', function ($scope, Announces) {
+angular.module('App').controller('searchController', function ($scope, Announces, Auth) {
 
     $scope.items = Announces;
     $scope.input = {};
