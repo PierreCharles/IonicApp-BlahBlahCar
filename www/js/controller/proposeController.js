@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('proposeController', function ($scope, Announces, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, ionicTimePicker, ionicDatePicker) {
+angular.module('App').controller('proposeController', function ($scope, Announces, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, ionicTimePicker, ionicDatePicker, Auth) {
 
    $scope.Announces = Announces;
 
@@ -11,7 +11,7 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         Highway:'',
         NumberOfPlace: '',
         Price:'',
-        UserId:'',
+        UserEmail:'',
         StartDate: '',
         StartHour : ''
     };
@@ -28,6 +28,8 @@ angular.module('App').controller('proposeController', function ($scope, Announce
        $scope.announces.FromCountries = start[1];
        $scope.announces.ToPlace = end[0];
        $scope.announces.ToCountries = end[1];
+
+       $scope.announces.UserEmail = Auth.user.auth.token.email;
 
        console.log($scope.announces);
        $scope.Announces.$add($scope.announces);
@@ -61,9 +63,9 @@ angular.module('App').controller('proposeController', function ($scope, Announce
     };
 
     var datePickerAnnounces = {
-        callback: function (val) {  //Mandatory
+        callback: function (val) {
             var startDate = new Date(val);
-            $scope.announces.StartDate = startDate.getDay()+"/"+startDate.getMonth()+"/"+startDate.getFullYear();
+            $scope.announces.StartDate = (startDate.getUTCDate()+1)+"/"+("0"+(startDate.getMonth()+1)).slice(-2)+"/"+startDate.getFullYear();
         },
         from: new Date(2016, 1, 1),
         to: new Date(2020, 1, 1),
@@ -80,7 +82,7 @@ angular.module('App').controller('proposeController', function ($scope, Announce
                 alert("What is start time ?");
             } else {
                 var selectedTime = new Date(val * 1000);
-                $scope.announces.StartHour = selectedTime.getUTCHours()+":"+selectedTime.getUTCMinutes();
+                $scope.announces.StartHour = ("0"+selectedTime.getUTCHours()).slice(-2)+":"+("0"+selectedTime.getUTCMinutes()).slice(-2);
             }
         },
         inputTime: 50400,

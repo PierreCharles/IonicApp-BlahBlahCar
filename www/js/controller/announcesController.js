@@ -3,7 +3,6 @@ angular.module('App').controller('announcesController', function ($scope, MyAnno
 
     $scope.items = MyAnnounces;
     
-
     console.log(MyAnnounces);
 
 });
