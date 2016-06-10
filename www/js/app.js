@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages', 'app.routes'])
+angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages', 'app.routes', 'ionicDatePicker', 'ionicTimePicker', 'ngAutocomplete'])
 
 .constant('FURL', 'https://ionicappblahblahcar.firebaseio.com/')
 
@@ -11,10 +11,10 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
   $ionicPlatform.ready(function() {
 
     if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+        StatusBar.styleDefault();
     }
   });
 });

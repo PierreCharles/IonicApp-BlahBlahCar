@@ -1,32 +1,57 @@
 <ion-view title="Propose a Ride" id="page4" class="backImage">
-
     <ion-content padding="true" class="has-header">
-        <form class="list ">
+        <form name="formAnnounces" ng-submit="addAnnounces(formAnnounces.$valid)" novalidate>
+            <br>
 
-            <label class="item item-input " id="proposeARide-input11">
+            <div class="marginLeftSearch">
+                <label class="item item-input">
+                    <i class="icon ion-ionic placeholder-icon departIcon"></i>
+                    <input ng-model="announces.From" ng-autocomplete  ng-required="true" type="search"  placeholder="From">
+                </label>
+            </div>
 
-                <input type="text" placeholder="From" ng-model="Info.From">
-            </label>
+            <div class="marginLeftSearch">
+                <label class="item item-input">
+                    <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
+                    <input ng-model="announces.To" ng-autocomplete ng-required="true" type="search" placeholder="To">
+                </label>
+            </div>
 
-            <label class="item item-input " id="proposeARide-input12">
-                <input type="text" placeholder="To" ng-model="Info.To">
-            </label>
+            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" ng-model="announces.Highway" class=" ">Highway</ion-toggle>
 
-            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" ng-model="Info.Highway" class=" ">Highway</ion-toggle>
+            <hr>
 
-            <label class="item item-input " id="proposeARide-input14">
-                <input type="date" placeholder="Date and hour start" ng-model="Info.DateHourStart">
-            </label>
+            <div class="marginLeftSearch">
+                <label class="item item-input">
+                    <i class="inlineD icon ion-calendar placeholder-icon"></i>
+                    <input ng-model="announces.StartDate" class="inlineD allerret" ng-required="true" type="text" ng-click="openDatePicker()" placeholder="Start date">
+                </label>
+                <label class="item item-input">
+                    <i class="inlineD icon ion-clock placeholder-icon"></i>
+                    <input ng-model="announces.StartHour" class="inlineD allerret" ng-required="true" type="text" ng-click="openTimePicker()" placeholder="Hour">
+                </label>
+            </div>
 
-            <label class="item item-input " id="proposeARide-input16">
-                <input type="text" placeholder="Price €" ng-model="Info.Price">
-            </label>
+            <hr>
 
-            <label class="item item-input " id="proposeARide-input18">
-                <input type="text" placeholder="Number Of Place" ng-model="Info.NumberOfPlace">
-            </label>
+            <div class="marginLeftSearch">
+                <label class="item item-input">
+                    <i class="icon ion-ionic placeholder-icon ion-pricetags"></i>
+                    <input ng-model="announces.Price" ng-required="true" type="text" placeholder="Price - €">
+                </label>
+            </div>
 
+
+            <div class="marginLeftSearch">
+                <label class="item item-input">
+                    <i class="icon ion-ionic placeholder-icon ion-person-stalker"></i>
+                    <input ng-model="announces.NumberOfPlace" ng-required="true" type="text" placeholder="Number Of Place">
+                </label>
+            </div>
+
+            <div style="text-align: center">
+                <input type="submit" class="button button-positive button-block" value="addAnnounces">
+            </div>
         </form>
-        <button id="proposeARide-button5" class=" button button-positive button-block " ng-click="addAnnounces(Info)">Add announces</button>
     </ion-content>
 </ion-view>

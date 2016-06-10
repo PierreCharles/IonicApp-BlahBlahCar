@@ -11,7 +11,6 @@ angular.module('App').controller('profileController', function ($scope, $cordova
         }
     };
 
-
     $scope.takePhoto = function () {
          var options = {
             quality: 75,
