@@ -36,7 +36,7 @@ label.item.valid-lr {
 }
 
 .backImage {
-    background: url(../assets/images/background.jpeg) no-repeat center center fixed;
+    background: url(../img/backgroundAppli.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

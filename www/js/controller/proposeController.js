@@ -16,6 +16,14 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         StartHour : ''
     };
 
+    $scope.openDatePicker = function(){
+        ionicDatePicker.openDatePicker(datePickerAnnounces);
+    };
+
+    $scope.openTimePicker = function() {
+        ionicTimePicker.openTimePicker(timePickerAnnounces);
+    };
+
    $scope.addAnnounces = function (isValid) {
 
        if (!isValid) this.showPopup("Failed","Failed to add an announces. You can insert data to all input !", false);
@@ -28,12 +36,18 @@ angular.module('App').controller('proposeController', function ($scope, Announce
        $scope.announces.FromCountries = start[1];
        $scope.announces.ToPlace = end[0];
        $scope.announces.ToCountries = end[1];
-
        $scope.announces.UserEmail = Auth.user.auth.token.email;
 
-       console.log($scope.announces);
        $scope.Announces.$add($scope.announces);
        this.showPopup("Success","Announces added with success.", true);
+
+       $scope.announces.From = '';
+       $scope.announces.To = '';
+       $scope.announces.Price='';
+       $scope.announces.NumberOfPlace='';
+       $scope.announces.StartDate='';
+       $scope.announces.StartHour='';
+       $scope.announces.Highway = false;
    };
 
     $scope.showPopup = function(title, message, success) {
@@ -54,14 +68,6 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         });
     };
 
-    $scope.openDatePicker = function(){
-        ionicDatePicker.openDatePicker(datePickerAnnounces);
-    };
-
-    $scope.openTimePicker = function() {
-        ionicTimePicker.openTimePicker(timePickerAnnounces);
-    };
-
     var datePickerAnnounces = {
         callback: function (val) {
             var startDate = new Date(val);
@@ -72,8 +78,7 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         inputDate: new Date(),
         mondayFirst: true,
         disableWeekdays: [0],
-        closeOnSelect: false,
-        templateType: 'popup'
+        closeOnSelect: true,
     };
 
     var timePickerAnnounces = {
@@ -88,7 +93,6 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         inputTime: 50400,
         format: 12,
         step: 15,
-        setLabel: 'Set2'
     };
 
 
