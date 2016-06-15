@@ -11,7 +11,8 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
             id: uid,
             email: user.email,
             gravatar: get_gravatar(user.email, 40),
-            registered_in: Date()
+            registered_in: Date(),
+            image:"img/avatarDefault.png"
           };
 
           var profileRef = $firebaseArray(ref.child('profile'));
@@ -26,6 +27,11 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
             {email: user.email, password: user.password}
           );
         },
+
+        update:function(image){
+          $firebaseArray(ref.child('profile').child('image')).$set(image);
+        },
+
 
         register: function(user) {
           return auth.$createUser({email: user.email, password: user.password})

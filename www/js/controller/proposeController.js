@@ -14,6 +14,7 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         Price:'',
         UserEmail:'',
         StartDate: '',
+        Image: '',
         StartHour : ''
     };
 
@@ -41,6 +42,8 @@ angular.module('App').controller('proposeController', function ($scope, Announce
            $scope.announces.ToPlace = end[0];
            $scope.announces.ToCountries = end[1];
            $scope.announces.UserEmail = Auth.user.auth.token.email;
+
+           $scope.announces.Image = Auth.user.auth.token.image ? Auth.user.auth.token.image : "img/avatarDefault.png";
 
            $scope.Announces.$add($scope.announces);
            this.showPopup("Success","Announces added with success.", true);

@@ -1,8 +1,10 @@
 'Use Strict';
-angular.module('App').controller('searchController', function ($scope, Announces, Auth) {
+angular.module('App').controller('searchController', function ($scope, Announces, $state) {
 
     $scope.items = Announces;
     $scope.input = {};
+
+    console.log(Announces);
 
     $scope.disableTap = function(){
         container = document.getElementsByClassName('pac-container');
