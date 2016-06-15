@@ -3,7 +3,7 @@
     <ion-header-bar class="bar bar-subheader tem-input-wrapper search" style="background:transparent;">
         <label class="item item-input">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" ng-autocomplete ng-model="input.searchText" placeholder="Search announces" >
+            <input type="text" ng-focus="disableTap()" ng-autocomplete ng-model="input.searchText" placeholder="Search announces" >
         </label>
     </ion-header-bar>
 

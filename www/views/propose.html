@@ -6,14 +6,18 @@
             <div class="marginLeftSearch">
                 <label class="item item-input">
                     <i class="icon ion-ionic placeholder-icon departIcon"></i>
-                    <input ng-model="announces.From" ng-autocomplete  ng-required="true" type="search"  placeholder="From">
+                    <input style="margin-right:25px;" ng-model="announces.From" ng-focus="disableTap()" ng-autocomplete  ng-required="true" type="search"  placeholder="From">
+
                 </label>
+
+                <i ng-click="currentLocalisation()" class="icon ion-android-locate placeholder-icon"></i>
+
             </div>
 
             <div class="marginLeftSearch">
                 <label class="item item-input">
                     <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
-                    <input ng-model="announces.To" ng-autocomplete ng-required="true" type="search" placeholder="To">
+                    <input ng-model="announces.To" ng-focus="disableTap()" ng-autocomplete ng-required="true" type="search" placeholder="To">
                 </label>
             </div>
 
@@ -48,6 +52,11 @@
                     <input ng-model="announces.NumberOfPlace" ng-required="true" type="text" placeholder="Number Of Place">
                 </label>
             </div>
+
+            <br/>
+            <hr>
+            <br/>
+
 
             <div style="text-align: center">
                 <input type="submit" class="button button-positive button-block" value="addAnnounces">

@@ -45,6 +45,7 @@ angular.module('App').controller('profileController', function ($scope, $cordova
 
         $cordovaCamera.getPicture(options).then(function (imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            
         }, function (err) {
              // An error occured. Show a message to the user
         });

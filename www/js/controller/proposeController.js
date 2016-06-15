@@ -1,5 +1,6 @@
 'Use Strict';
-angular.module('App').controller('proposeController', function ($scope, Announces, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, ionicTimePicker, ionicDatePicker, Auth) {
+angular.module('App').controller('proposeController', function ($scope, Announces, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup,
+                                                                ionicTimePicker, ionicDatePicker,$cordovaGeolocation, Auth) {
 
    $scope.Announces = Announces;
 
@@ -26,28 +27,32 @@ angular.module('App').controller('proposeController', function ($scope, Announce
 
    $scope.addAnnounces = function (isValid) {
 
-       if (!isValid) this.showPopup("Failed","Failed to add an announces. You can insert data to all input !", false);
+       if (!isValid){
+           this.showPopup("Failed","Failed to add an announces. You can insert data to all input !", false);
+       }
 
-       var regex = new RegExp("[ ,]+", "g");
-       var start = $scope.announces.From.split(regex);
-       var end = $scope.announces.To.split(regex);
+       else{
+           var regex = new RegExp("[ ,]+", "g");
+           var start = $scope.announces.From.split(regex);
+           var end = $scope.announces.To.split(regex);
 
-       $scope.announces.FromPlace = start[0];
-       $scope.announces.FromCountries = start[1];
-       $scope.announces.ToPlace = end[0];
-       $scope.announces.ToCountries = end[1];
-       $scope.announces.UserEmail = Auth.user.auth.token.email;
+           $scope.announces.FromPlace = start[0];
+           $scope.announces.FromCountries = start[1];
+           $scope.announces.ToPlace = end[0];
+           $scope.announces.ToCountries = end[1];
+           $scope.announces.UserEmail = Auth.user.auth.token.email;
 
-       $scope.Announces.$add($scope.announces);
-       this.showPopup("Success","Announces added with success.", true);
+           $scope.Announces.$add($scope.announces);
+           this.showPopup("Success","Announces added with success.", true);
 
-       $scope.announces.From = '';
-       $scope.announces.To = '';
-       $scope.announces.Price='';
-       $scope.announces.NumberOfPlace='';
-       $scope.announces.StartDate='';
-       $scope.announces.StartHour='';
-       $scope.announces.Highway = false;
+           $scope.announces.From = '';
+           $scope.announces.To = '';
+           $scope.announces.Price='';
+           $scope.announces.NumberOfPlace='';
+           $scope.announces.StartDate='';
+           $scope.announces.StartHour='';
+           $scope.announces.Highway = false;
+       }
    };
 
     $scope.showPopup = function(title, message, success) {
@@ -68,17 +73,31 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         });
     };
 
+    $scope.disableTap = function(){
+        container = document.getElementsByClassName('pac-container');
+        // disable ionic data tab
+        angular.element(container).attr('data-tap-disabled', 'true');
+        // leave input field if google-address-entry is selected
+        angular.element(container).on("click", function(){
+            document.getElementById('searchBar').blur();
+        });
+    };
+
     var datePickerAnnounces = {
         callback: function (val) {
             var startDate = new Date(val);
-            $scope.announces.StartDate = (startDate.getUTCDate()+1)+"/"+("0"+(startDate.getMonth()+1)).slice(-2)+"/"+startDate.getFullYear();
+            $scope.announces.StartDate =
+                ("0"+(startDate.getDate())).slice(-2)
+                +"/"+("0"+(startDate.getMonth()+1)).slice(-2)
+                +"/"+startDate.getFullYear();
         },
-        from: new Date(2016, 1, 1),
+        from: new Date(2015,1,1),
         to: new Date(2020, 1, 1),
         inputDate: new Date(),
         mondayFirst: true,
-        disableWeekdays: [0],
-        closeOnSelect: true,
+        disableDaysOfWeek: false,
+        showTodayButton: false,
+        closeOnSelect: true
     };
 
     var timePickerAnnounces = {
@@ -92,9 +111,47 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         },
         inputTime: 50400,
         format: 12,
-        step: 15,
+        step: 15
     };
 
+    //--------------- Geolocalisation -------------------------//
+
+    $scope.currentLocalisation = function() {
+        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+        $cordovaGeolocation
+            .getCurrentPosition(posOptions)
+            .then(function (position) {
+                console.log(position);
+                var lat  = position.coords.latitude;
+                var long = position.coords.longitude;
+
+                $http({method: 'GET', url: 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long+'&sensor=true'}).
+                success(function(data, status, headers, config) {
+                    var city = '';
+                    var country = '';
+                    var counting = 0;
+
+                    console.log(data);
+                    angular.forEach(data.results[0].address_components, function(object) {
+                        if(counting==2){
+                            city = object.long_name;
+                        }
+                        if(counting==5){
+                            country = object.long_name;
+                        }
+                        counting = counting + 1;
+                    });
+                    $scope.announces.From = city+","+country;
+                }).
+                error(function(data, status, headers, config) {
+                    alert("Error during getting the current location.")
+                });
+
+            }, function(err) {
+                alert("Error during getting your current location.");
+            });
+
+    };
 
 
 });
