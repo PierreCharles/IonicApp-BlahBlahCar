@@ -1,13 +1,14 @@
-<ion-view title="Propose a Ride" id="page4" class="backImage">
+<ion-view cache-view="false" title="Propose a Ride" id="page4" class="backImage">
     <ion-content padding="true" class="has-header">
         <form name="formAnnounces" ng-submit="addAnnounces(formAnnounces.$valid)" novalidate>
             <br>
 
             <div class="marginLeftSearch">
-                    <label class="item item-input" style="with:50px;">
-                        <i class="icon ion-ionic placeholder-icon departIcon"></i>
-                        <input ng-model="announces.From" ng-focus="disableTap()" ng-autocomplete  ng-required="true" type="search"  placeholder="From">
-                    </label>
+                <label class="item item-input" style="with:50px;">
+                    <i class="icon ion-ionic placeholder-icon departIcon"></i>
+                    <input ng-model="announces.From" ng-focus="disableTap()" ng-autocomplete ng-required="true"
+                           type="search" placeholder="From">
+                </label>
             </div>
 
             <div style="text-align: center">
@@ -17,22 +18,27 @@
             <div class="marginLeftSearch">
                 <label class="item item-input">
                     <i class="icon ion-ionic placeholder-icon arriveIcon"></i>
-                    <input ng-model="announces.To" ng-focus="disableTap()" ng-autocomplete ng-required="true" type="search" placeholder="To">
+                    <input ng-model="announces.To" ng-focus="disableTap()" ng-autocomplete ng-required="true"
+                           type="search" placeholder="To">
                 </label>
             </div>
 
-            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" ng-model="announces.Highway" class=" ">Highway</ion-toggle>
+            <ion-toggle toggle-class="toggle-positive" id="proposeARide-toggle3" ng-model="announces.Highway" class=" ">
+                Highway
+            </ion-toggle>
 
             <hr>
 
             <div class="marginLeftSearch">
                 <label class="item item-input">
                     <i class="inlineD icon ion-calendar placeholder-icon"></i>
-                    <input ng-model="announces.StartDate" class="inlineD allerret" ng-required="true" type="text" ng-click="openDatePicker()" placeholder="Start date">
+                    <input ng-model="announces.StartDate" class="inlineD allerret" ng-required="true" type="text"
+                           ng-click="openDatePicker()" placeholder="Start date">
                 </label>
                 <label class="item item-input">
                     <i class="inlineD icon ion-clock placeholder-icon"></i>
-                    <input ng-model="announces.StartHour" class="inlineD allerret" ng-required="true" type="text" ng-click="openTimePicker()" placeholder="Hour">
+                    <input ng-model="announces.StartHour" class="inlineD allerret" ng-required="true" type="text"
+                           ng-click="openTimePicker()" placeholder="Hour">
                 </label>
             </div>
 
@@ -49,7 +55,8 @@
             <div class="marginLeftSearch">
                 <label class="item item-input">
                     <i class="icon ion-ionic placeholder-icon ion-person-stalker"></i>
-                    <input ng-model="announces.NumberOfPlace" ng-required="true" type="text" placeholder="Number Of Place">
+                    <input ng-model="announces.NumberOfPlace" ng-required="true" type="text"
+                           placeholder="Number Of Place">
                 </label>
             </div>
 

@@ -11,27 +11,28 @@
 
 /** Styling for the username field **/
 label.item.has-error {
-  border-bottom: 2px solid red;
+    border-bottom: 2px solid red;
 }
 
 /** Styling for the password field when an error exists**/
 label.item.has-error-lr {
-  border-bottom: 2px solid red;
+    border-bottom: 2px solid red;
 }
 
 /** Styling for the password field when an error has been resolved**/
 label.item.valid-lr {
-  border-left: 2px solid green;
-  border-right: 2px solid green;
+    border-left: 2px solid green;
+    border-right: 2px solid green;
 }
 
 /** Styling for the error text and container **/
 .form-errors {
-  margin: 5px 0
+    margin: 5px 0
 }
+
 .form-error {
-  padding: 2px 0 2px 16px;
-  color: red;
+    padding: 2px 0 2px 16px;
+    color: red;
 }
 
 .backImage {
@@ -45,22 +46,27 @@ label.item.valid-lr {
     margin: 10px;
 }
 
-.italique {font-style: italic;}
+.italique {
+    font-style: italic;
+}
 
-
-.ionItem{
+.ionItem {
     padding: 0px;
     background-color: transparent;
     border: none;
     overflow: inherit;
 }
 
-.imgProfile{
-    width:150px;
-    height:150px;
+.imgProfile {
+    width: 150px;
+    height: 150px;
     pxtext-align: center;
 }
 
-.ionItemItem{
-    padding: 0px; background-color: transparent; border: none; overflow: inherit; padding:0px;
+.ionItemItem {
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    overflow: inherit;
+    padding: 0px;
 }

@@ -1,4 +1,4 @@
-<ion-view view-title="Profile" hide-back-button="true" class="backImage">
+<ion-view cache-view="false" view-title="Profile" hide-back-button="true" class="backImage">
 
     <ion-content ng-controller="profileController" padding="true">
 
@@ -14,15 +14,12 @@
                 <br>
             </div>
             <ul class="list inset">
-                <button class="button button-full button-stable" ng-click="takePhoto()"> Take Photo </button>
-                <button class="button button-full button-stable" ng-click="choosePhoto()"> Choose Photo </button>
+                <button class="button button-full button-stable" ng-click="takePhoto()"> Take Photo</button>
+                <button class="button button-full button-stable" ng-click="choosePhoto()"> Choose Photo</button>
                 <br>
                 <button ng-click="logOut()" id="search-button4" class=" button button-full button-assertive ">
                     Logout <i class="icon ion-power"></i>
                 </button>
-
-                <button class="button button-full button-stable" ng-click="update()"> En développement </button>
-
             </ul>
         </div>
 

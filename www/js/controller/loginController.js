@@ -1,39 +1,39 @@
 'Use Strict';
-angular.module('App').controller('loginController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('loginController', function ($scope, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $firebaseObject, Auth, FURL, Utils) {
     var ref = new Firebase(FURL);
     var userkey = "";
     $scope.signIn = function (user) {
-        if(angular.isDefined(user)){
+        if (angular.isDefined(user)) {
             Utils.show();
             Auth.login(user)
-                .then(function(authData) {
-                    ref.child('profile').orderByChild("id").equalTo(authData.uid).on("child_added", function(snapshot) {
+                .then(function (authData) {
+                    ref.child('profile').orderByChild("id").equalTo(authData.uid).on("child_added", function (snapshot) {
                         console.log(snapshot.key());
                         userkey = snapshot.key();
                         var obj = $firebaseObject(ref.child('profile').child(userkey));
 
                         obj.$loaded()
-                            .then(function(data) {
+                            .then(function (data) {
                                 $localStorage.email = obj.email;
                                 $localStorage.userkey = userkey;
                                 Utils.hide();
                                 $state.go('menu.search');
                             })
-                            .catch(function(error) {
+                            .catch(function (error) {
                                 console.error("Error:", error);
                             });
                     });
 
-                }, function(err) {
+                }, function (err) {
                     Utils.hide();
                     Utils.errMessage(err);
                 });
         }
     };
 
-    $scope.loginWithGoogle =  function(){
+    $scope.loginWithGoogle = function () {
 
-        ref.authWithOAuthPopup("google", function(error, authData) {
+        ref.authWithOAuthPopup("google", function (error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);
                 } else {
@@ -44,9 +44,9 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
         );
     };
 
-    $scope.loginWithFacebook =  function(){
+    $scope.loginWithFacebook = function () {
 
-        ref.authWithOAuthPopup("facebook", function(error, authData) {
+        ref.authWithOAuthPopup("facebook", function (error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);
                 } else {
@@ -57,9 +57,9 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
         );
     };
 
-    $scope.loginWithTwitter =  function(){
+    $scope.loginWithTwitter = function () {
 
-        ref.authWithOAuthPopup("twitter", function(error, authData) {
+        ref.authWithOAuthPopup("twitter", function (error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);
                 } else {

@@ -1,19 +1,19 @@
 'Use Strict';
-angular.module('App').controller('profileController', function ($scope, $cordovaCamera, $location,  Auth, FURL) {
+angular.module('App').controller('profileController', function ($scope, $cordovaCamera, $location, Auth, FURL) {
 
     var auth = Auth;
-    $scope.user_email=auth.user.auth.token.email;
+    $scope.user_email = auth.user.auth.token.email;
     $scope.imgURI = auth.user.auth.token.image ? auth.user.auth.token.image : "img/avatarDefault.png";
 
-    $scope.logOut = function() {
-        if(angular.isDefined(auth.user)){
+    $scope.logOut = function () {
+        if (angular.isDefined(auth.user)) {
             auth.logout();
             $location.path('/login');
         }
     };
 
     $scope.takePhoto = function () {
-         var options = {
+        var options = {
             quality: 75,
             destinationType: Camera.DestinationType.DATA_URL,
             sourceType: Camera.PictureSourceType.CAMERA,
@@ -24,13 +24,13 @@ angular.module('App').controller('profileController', function ($scope, $cordova
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };
-         $cordovaCamera.getPicture(options).then(function (imageData) {
+        $cordovaCamera.getPicture(options).then(function (imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            $scope.update($scope.imgURI);
+            auth.updateImage($scope.imgURI);
 
         }, function (err) {
-             // An error occured. Show a message to the user
-         });
+            // An error occured. Show a message to the user
+        });
     };
 
     $scope.choosePhoto = function () {
@@ -48,10 +48,10 @@ angular.module('App').controller('profileController', function ($scope, $cordova
 
         $cordovaCamera.getPicture(options).then(function (imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            $scope.updateImage($scope.imgURI);
-            
+            auth.updateImage($scope.imgURI);
+
         }, function (err) {
-             // An error occured. Show a message to the user
+            // An error occured. Show a message to the user
         });
     };
 });
