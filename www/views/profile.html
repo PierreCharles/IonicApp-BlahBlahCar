@@ -2,16 +2,14 @@
 
     <ion-content ng-controller="profileController" padding="true">
 
-        <!-- Welcome View -->
         <div class="panel" title="Welcome" id="page1" data-header="none" data-footer="none" selected="true">
             <div style="text-align:center">
                 <br>
                 <br>
                 <h3>{{ user_email }}</h3>
 
-                <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
+                <img ng-show="imgURI !== undefined" ng-src="{{ imgURI }}" class="imgProfile">
 
-                <p>Welcome on my app</p>
                 <br>
                 <br>
             </div>
@@ -22,15 +20,11 @@
                 <button ng-click="logOut()" id="search-button4" class=" button button-full button-assertive ">
                     Logout <i class="icon ion-power"></i>
                 </button>
+
+                <button class="button button-full button-stable" ng-click="update()"> En développement </button>
+
             </ul>
         </div>
 
-
-        <button class="button button-full button-stable" ng-click="update()"> Take Photo </button>
-
-
-
     </ion-content>
-
-
 </ion-view>

@@ -1,5 +1,4 @@
 /* Empty. Add your own CSS if you like */
-
 .larger {
     font-size: 120px;
 }
@@ -48,3 +47,20 @@ label.item.valid-lr {
 
 .italique {font-style: italic;}
 
+
+.ionItem{
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    overflow: inherit;
+}
+
+.imgProfile{
+    width:150px;
+    height:150px;
+    pxtext-align: center;
+}
+
+.ionItemItem{
+    padding: 0px; background-color: transparent; border: none; overflow: inherit; padding:0px;
+}

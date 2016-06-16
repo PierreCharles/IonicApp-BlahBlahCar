@@ -1,7 +1,9 @@
 angular.module('App').factory("Announces", function(FURL, $firebaseArray) {
+
     var urlAnnounces = FURL+"Announces";
     var itemsRefAnnounces = new Firebase(urlAnnounces);
     return $firebaseArray(itemsRefAnnounces);
+
 });
 
 angular.module('App').factory("MyAnnounces", function(FURL, Auth, $firebaseArray) {

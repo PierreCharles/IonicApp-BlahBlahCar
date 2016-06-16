@@ -4,6 +4,7 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
 	var auth = $firebaseAuth(ref);
 
 	var Auth = {
+
 		user: {},
 
         createProfile: function(uid, user) {
@@ -29,9 +30,9 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
         },
 
         update:function(image){
-          $firebaseArray(ref.child('profile').child('image')).$set(image);
+          var profileRef = $firebaseArray(ref.child('profile'));
+          profileRef.child('image').set(image);
         },
-
 
         register: function(user) {
           return auth.$createUser({email: user.email, password: user.password})
