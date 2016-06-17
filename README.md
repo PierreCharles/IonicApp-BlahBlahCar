@@ -12,7 +12,7 @@ IonicApp-BlahBlahCar is a simple cordova application using Ionic and Firebase.
 
 ## Features
 
-    - Authentification :
+    - Auth:
         - Register Users.
         - LogIn Users.
         - Reset Password.
@@ -26,5 +26,9 @@ IonicApp-BlahBlahCar is a simple cordova application using Ionic and Firebase.
 
     - Other :
         - Auto-completing input.
+        - Localisation
+        - Time and distance of travel
         - Take and upload picture profile.
         - Date and time picker.
+        - Caches views manager
+        - Form validate

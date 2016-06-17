@@ -1,21 +1,27 @@
 <ion-view title="My Announces" id="page2" class="backImage">
-     <ion-content>
-         <div class="announces bloc">
-             <ion-list class ="announcesList">
-                 <ion-item ng-repeat="item in items"  style="padding: 0px; background-color: transparent; border: none; overflow: inherit; padding:0px;">
-                     <div class="list card">
-                         <div class="item item-body">
-                             <h2 style="margin:0px;" >
-                                 <b>{{item.FromPlace}} </b> <span class="italique">({{item.FromCountries}})</span> -
-                                 <b>{{item.ToPlace}} </b> <span class="italique">({{item.ToCountries}})</span>
-                             </h2>
-                             <p>{{item.StartDate }} at {{item.StartHour }} - {{item.NumberOfPlace}} - {{item.Price}} €</p>
-                         </div>
-                     </div>
-                 </ion-item>
+    <ion-content>
+        <div class="announces bloc">
+            <ion-list class="announcesList">
+                <ion-item ng-repeat="item in items"
+                          style="padding: 0px; background-color: transparent; border: none; overflow: inherit; padding:0px;">
+                    <div class="list card">
+                        <div class="item item-body">
+                            <h2 style="margin:0px;">
+                                <b>{{item.FromPlace}} </b> <span class="italique">({{item.FromCountries}})</span> -
+                                <b>{{item.ToPlace}} </b> <span class="italique">({{item.ToCountries}})</span>
+                            </h2>
+                            <p style="padding:0px;">
+                                <span style="color:darkorange">{{item.StartDate }} at {{item.StartHour }}</span>
+                                <span style="color:black"> - {{item.Price}} €</span>
+                                <span style="color:darkred"> -- {{item.NumberOfPlace }} Place</span><br/>
+                                <span style="color:blue; padding:0px; margin-top:0px;">{{item.Distance}} -- {{item.Time}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </ion-item>
 
-             </ion-list>
-         </div>
+            </ion-list>
+        </div>
 
     </ion-content>
 </ion-view>

@@ -87,7 +87,14 @@ label.item.valid-lr {
 
 .geolocIcon {
     color: darkblue;
-    font-size: 22px;
     display: inline;
     padding: 3px;
+    font-size: 30px;
+
+    background: #eeeeee;
+    border: 1px solid #38A6B5;
+
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
 }
