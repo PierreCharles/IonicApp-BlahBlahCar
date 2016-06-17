@@ -125,7 +125,6 @@ angular.module('App').controller('proposeController', function ($scope, Announce
         $cordovaGeolocation
             .getCurrentPosition(posOptions)
             .then(function (position) {
-                console.log(position);
                 var lat = position.coords.latitude;
                 var long = position.coords.longitude;
 
@@ -136,8 +135,6 @@ angular.module('App').controller('proposeController', function ($scope, Announce
                     var city = '';
                     var country = '';
                     var counting = 0;
-
-                    console.log(data);
                     angular.forEach(data.results[0].address_components, function (object) {
                         if (counting == 2) {
                             city = object.long_name;

@@ -8,7 +8,7 @@ angular.module('app.routes', [])
                 templateUrl: 'views/login.html',
                 controller: 'loginController'
             })
-
+            
             .state('forgot', {
                 url: '/forgot',
                 templateUrl: 'views/forgot.html',

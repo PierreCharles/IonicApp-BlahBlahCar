@@ -70,3 +70,24 @@ label.item.valid-lr {
     overflow: inherit;
     padding: 0px;
 }
+
+.startIcon {
+    font-size: 22px;
+    color: green;
+    display: inline;
+    padding: 3px;
+}
+
+.endIcon {
+    color: red;
+    font-size: 22px;
+    display: inline;
+    padding: 3px;
+}
+
+.geolocIcon {
+    color: darkblue;
+    font-size: 22px;
+    display: inline;
+    padding: 3px;
+}

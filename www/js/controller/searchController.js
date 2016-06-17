@@ -1,10 +1,12 @@
 'Use Strict';
-angular.module('App').controller('searchController', function ($scope, Announces, $state) {
+angular.module('App').controller('searchController', function ($scope, Announces, $state, $http) {
 
     $scope.items = Announces;
-    $scope.input = {};
 
     console.log(Announces);
+    console.log(Announces[0]);
+    $scope.input = {};
+
 
     $scope.disableTap = function () {
         container = document.getElementsByClassName('pac-container');
@@ -15,5 +17,11 @@ angular.module('App').controller('searchController', function ($scope, Announces
             document.getElementById('searchBar').blur();
         });
     };
+
+    $scope.getAnnounceDetail = function(item){
+        console.log(item);
+        $state.go('announce-detail', {item:item});
+    };
+
 
 });
